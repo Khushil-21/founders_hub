@@ -1,4 +1,8 @@
 import { auth, signIn, signOut } from "@/auth";
+import {
+	IconBrandGithubFilled,
+	IconBrandGoogleFilled,
+} from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -37,7 +41,9 @@ export default async function Navbar() {
 									await signIn("github");
 								}}
 							>
-								<button type="submit">Login with GitHub</button>
+								<button type="submit">
+									<IconBrandGithubFilled className="text-black-200" />
+								</button>
 							</form>
 							<form
 								action={async () => {
@@ -45,7 +51,9 @@ export default async function Navbar() {
 									await signIn("google");
 								}}
 							>
-								<button type="submit">Login with Google</button>
+								<button type="submit">
+									<IconBrandGoogleFilled className="text-black-200" />
+								</button>
 							</form>
 						</>
 					)}
