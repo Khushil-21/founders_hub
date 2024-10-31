@@ -16,7 +16,7 @@ export default function SearchForm({ query }: { query?: string }) {
 			<div className="flex gap-2">
 				{query && <SearchResetButton />}
 				<button type="submit" className="search-btn text-white">
-					<IconSearch />
+					<IconSearch stroke={3} />
 				</button>
 			</div>
 		</Form>
