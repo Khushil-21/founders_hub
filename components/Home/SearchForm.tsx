@@ -10,7 +10,7 @@ export default function SearchForm({ query }: { query?: string }) {
 				type="text"
 				name="query"
 				className="search-input"
-				placeholder="Search Startups"
+				placeholder="Search Startups here..."
 				defaultValue={query}
 			/>
 			<div className="flex gap-2">
