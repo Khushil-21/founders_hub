@@ -12,7 +12,10 @@ export default async function Home({
 }) {
 	const query = (await searchParams).query;
 
-	const { data: posts } = await sanityFetch({ query: STARTUPS_QUERY });
+	const { data: posts } = await sanityFetch({
+		query: STARTUPS_QUERY,
+		params: { search: query || null },
+	});
 
 	return (
 		<div>
