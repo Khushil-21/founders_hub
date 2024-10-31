@@ -39,6 +39,14 @@ export default async function Navbar() {
 							>
 								<button type="submit">Login with GitHub</button>
 							</form>
+							<form
+								action={async () => {
+									"use server";
+									await signIn("google");
+								}}
+							>
+								<button type="submit">Login with Google</button>
+							</form>
 						</>
 					)}
 				</div>
