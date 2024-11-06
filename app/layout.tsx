@@ -4,6 +4,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "easymde/dist/easymde.min.css";
+import { Toaster } from "@/components/ui/toaster";
 
 const workSans = localFont({
 	src: [
@@ -34,7 +35,10 @@ export default function RootLayout({
 		<html lang="en">
 			<Analytics />
 			<SpeedInsights />
-			<body className={workSans.variable}>{children}</body>
+			<body className={workSans.variable}>
+				{children}
+				<Toaster />
+			</body>
 		</html>
 	);
 }

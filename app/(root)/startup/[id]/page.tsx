@@ -54,7 +54,7 @@ export default async function page({
 
 	return (
 		<div>
-			<section className="pink_container !min-h-[230px]">
+			<section className="pink_container !min-h-[280px]">
 				<p className="tag">{formatDate(startup?._createdAt)}</p>
 
 				<h1 className="heading">{startup.title}</h1>
