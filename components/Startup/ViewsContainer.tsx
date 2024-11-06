@@ -17,10 +17,10 @@ export default async function ViewsContainer({ id }: { id: string }) {
 
 	after(async () => {
 		await writeClient.patch(id).inc({ views: 1 }).commit();
-	await writeClient
-		.patch(id)
-		.set({ views: totalViews + 1 })
-		.commit();
+		// await writeClient
+		// 	.patch(id)
+		// 	.set({ views: totalViews + 1 })
+		// 	.commit();
 	});
 
 	return (
