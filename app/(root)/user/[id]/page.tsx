@@ -1,9 +1,11 @@
 import { auth } from "@/auth";
+import StartupCardSkeleton from "@/components/Startup/StartupCardSkeleton";
+import UserStartups from "@/components/User/UserStartups";
 import { client } from "@/sanity/lib/client";
 import { ALL_AUTHORS_QUERY, AUTHOR_BY_ID_QUERY } from "@/sanity/lib/queries";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import React from "react";
+import React, { Suspense } from "react";
 
 export const experimental_ppr = true;
 
@@ -25,8 +27,6 @@ export const generateMetadata = async ({
 };
 export const generateStaticParams = async () => {
 	const authors = await client.fetch<{ _id: string }[]>(ALL_AUTHORS_QUERY);
-    console.log("authors: ", authors);
-
 	return authors.map((author) => ({
 		id: author._id,
 	}));
@@ -56,6 +56,7 @@ export default async function page({
 					alt={user.name}
 					width={220}
 					height={220}
+					quality={100}
 					className="profile_image"
 				/>
 
@@ -66,7 +67,12 @@ export default async function page({
 				<p className="text-30-bold">
 					{session?.id === id ? "Your" : "All"} Startups
 				</p>
-			</div>{" "}
+				<ul className="card_grid-sm">
+					<Suspense fallback={<StartupCardSkeleton />}>
+						<UserStartups id={id} />
+					</Suspense>
+				</ul>
+			</div>
 		</section>
 	);
 }

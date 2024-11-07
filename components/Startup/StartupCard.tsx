@@ -20,7 +20,7 @@ export default function StartupCard({ post }: { post: StartupTypeCard }) {
 	} = post;
 
 	return (
-		<li className="startup-card group">
+		<li className="startup-card group flex flex-col justify-between">
 			<div className="flex-between">
 				<p className="startup_card_date">{formatDate(_createdAt)}</p>
 				<div className="flex gap-1.5">
@@ -48,10 +48,9 @@ export default function StartupCard({ post }: { post: StartupTypeCard }) {
 					/>
 				</Link>
 			</div>
+			<p className="startup-card_desc line-clamp-2">{description}</p>
 
 			<Link href={`/startup/${_id}`}>
-				<p className="startup-card_desc">{description}</p>
-
 				<Image
 					src={image || ""}
 					alt="placeholder"

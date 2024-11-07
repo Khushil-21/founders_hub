@@ -1,7 +1,9 @@
 import SearchForm from "@/components/Home/SearchForm";
 import StartupCard, { StartupTypeCard } from "@/components/Startup/StartupCard";
+import StartupCardSkeleton from "@/components/Startup/StartupCardSkeleton";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { STARTUPS_QUERY } from "@/sanity/lib/queries";
+import { Suspense } from "react";
 
 export default async function Home({
 	searchParams,
@@ -39,7 +41,9 @@ export default async function Home({
 				<ul className="mt-7 card_grid">
 					{posts?.length > 0 ? (
 						posts.map((post: StartupTypeCard) => (
-							<StartupCard key={post?._id} post={post} />
+							<Suspense key={post?._id} fallback={<StartupCardSkeleton />}>
+								<StartupCard post={post} />
+							</Suspense>
 						))
 					) : (
 						<p className="no-results">No startups found</p>
