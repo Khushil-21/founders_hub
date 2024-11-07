@@ -1,4 +1,3 @@
-import { auth } from "@/auth";
 import SearchForm from "@/components/Home/SearchForm";
 import StartupCard, { StartupTypeCard } from "@/components/Startup/StartupCard";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
@@ -15,8 +14,6 @@ export default async function Home({
 		query: STARTUPS_QUERY,
 		params: { search: query || null },
 	});
-
-	const session = await auth();
 
 	return (
 		<div>
