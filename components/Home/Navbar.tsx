@@ -2,10 +2,13 @@ import { auth, signIn, signOut } from "@/auth";
 import {
 	IconBrandGithubFilled,
 	IconBrandGoogleFilled,
+	IconLogout,
+	IconPlus,
 } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 export default async function Navbar() {
 	const session = await auth();
@@ -19,17 +22,32 @@ export default async function Navbar() {
 				<div className="flex items-center gap-x-5">
 					{session && session?.user ? (
 						<>
-							<Link href={"/startup/create"}>Create</Link>
+							<Link href="/startup/create">
+								<span className="max-sm:hidden">Create</span>
+								<IconPlus className="size-6 sm:hidden" />
+							</Link>
+
 							<form
 								action={async () => {
 									"use server";
-									await signOut();
+
+									await signOut({ redirectTo: "/" });
 								}}
 							>
-								<button type="submit">Logout</button>
+								<button type="submit">
+									<span className="max-sm:hidden">Logout</span>
+									<IconLogout className="size-6 sm:hidden text-red-500" />
+								</button>
 							</form>
+
 							<Link href={`/user/${session?.id}`}>
-								{session?.user?.name}
+								<Avatar className="size-10">
+									<AvatarImage
+										src={session?.user?.image || ""}
+										alt={session?.user?.name || ""}
+									/>
+									<AvatarFallback>{session?.user?.name?.[0]}</AvatarFallback>
+								</Avatar>
 							</Link>
 						</>
 					) : (
