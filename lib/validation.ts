@@ -9,12 +9,23 @@ export const formSchema = z.object({
 		.url()
 		.refine(async (url) => {
 			try {
-				const res = await fetch(url, { method: "HEAD" });
+				// Check if URL ends with common image extensions
+				const imageExtensions = [".jpg", ".jpeg", ".png", ".gif", ".webp"];
+				const lowercaseUrl = url.toLowerCase();
+				const hasImageExtension = imageExtensions.some((ext) =>
+					lowercaseUrl.endsWith(ext)
+				);
+
+				if (hasImageExtension) return true;
+
+				// Fallback to content-type check
+				const res = await fetch(url, { method: "HEAD", mode: "no-cors" });
+				console.log("------res: ", res);
 				const contentType = res.headers.get("content-type");
 				return contentType?.startsWith("image/");
 			} catch {
 				return false;
 			}
 		}),
-	pitch: z.string().min(10),
+	pitch: z.string(),
 });

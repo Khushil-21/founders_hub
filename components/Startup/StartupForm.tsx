@@ -10,6 +10,7 @@ import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
 import { createPitch } from "@/lib/action";
 import { useRouter } from "next/navigation";
+import { formSchema } from "@/lib/validation";
 
 const StartupForm = () => {
 	const [errors, setErrors] = useState<Record<string, string>>({});
@@ -19,6 +20,9 @@ const StartupForm = () => {
 
 	const handleFormSubmit = async (prevState: object, formData: FormData) => {
 		try {
+			const newFormData = Object.fromEntries(formData.entries());
+			console.log("newFormData: ", newFormData);
+			await formSchema.parseAsync({ ...newFormData, pitch });
 			const result = await createPitch(prevState, formData, pitch);
 
 			if (result.status == "SUCCESS") {
