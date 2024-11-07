@@ -14,12 +14,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 			let id, username, bio;
 
 			if (account?.provider === "google") {
-				console.log("google");
 				id = account.providerAccountId;
 				username = email?.split("@")[0] || name;
 				bio = "";
 			} else if (account?.provider === "github") {
-				console.log("github");
 				if (!profile) return false;
 				id = profile.id;
 				username = profile.login;
