@@ -15,7 +15,7 @@ import {structure} from './sanity/structure'
 import {markdownSchema} from 'sanity-plugin-markdown'
 
 export default defineConfig({
-  basePath: '/studio',
+  basePath: '/sanity',
   projectId,
   dataset,
   // Add and edit the content schema in the './sanity/schemaTypes' folder

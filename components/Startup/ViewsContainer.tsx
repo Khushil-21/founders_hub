@@ -7,14 +7,20 @@ import { writeClient } from "@/sanity/lib/write-client";
 
 export default async function ViewsContainer({ id }: { id: string }) {
 	// First increment the view count
-	await writeClient.patch(id).inc({ views: 1 }).commit();
-
-	// Then fetch the updated view count
-	const { views: totalViews } = await client
-		.withConfig({ useCdn: false })
-		.fetch(STARTUP_VIEWS_QUERY, {
-			id,
-		});
+	let totalViews = 0;
+	try {
+		await writeClient.patch(id).inc({ views: 1 }).commit();
+		// Then fetch the updated view count
+		const { views } = await client
+			.withConfig({ useCdn: false })
+			.fetch(STARTUP_VIEWS_QUERY, {
+				id,
+			});
+		totalViews = views;
+	} catch (error) {
+		totalViews = 0;
+		console.log("error: ", error);
+	}
 
 	// after(async () => {
 	// 	await writeClient.patch(id).inc({ views: 1 }).commit();
