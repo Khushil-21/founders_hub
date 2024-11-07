@@ -15,8 +15,20 @@ export default async function Navbar() {
 	return (
 		<header className="px-5 py-3 bg-white shadow-sm font-work-sans">
 			<nav className="flex items-center justify-between">
-				<Link href="/">
-					<Image src="/logo.png" alt="logo" width={144} height={30} />
+				<Link href="/" className="flex items-center gap-x-2">
+					<Image
+						src="/logo.png"
+						alt="logo"
+						width={50}
+						height={50}
+						quality={100}
+					/>
+					<span className="text-2xl font-bold">
+						<span className="text-3xl text-blue-500">F</span>
+						<span className="text-black-200">ounders</span>
+						<span className="text-3xl text-blue-500 ml-2">H</span>
+						<span className="text-black-200">ub</span>
+					</span>
 				</Link>
 
 				<div className="flex items-center gap-x-5">
