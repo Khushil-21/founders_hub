@@ -24,6 +24,13 @@ const workSans = localFont({
 export const metadata: Metadata = {
 	title: "Founders Hub",
 	description: "find all registered startups in one place",
+	openGraph: {
+		images: ["/homepage.png"],
+	},
+	twitter: {
+		card: "summary_large_image",
+		images: ["/homepage.png"],
+	},
 };
 
 export default function RootLayout({
