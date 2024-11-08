@@ -19,14 +19,14 @@ export default async function Navbar() {
 					<Image
 						src="/logo.png"
 						alt="logo"
-						width={50}
-						height={50}
+						width={40}
+						height={40}
 						quality={100}
 					/>
 					<span className="text-2xl font-bold">
-						<span className="text-3xl text-blue-500">F</span>
+						<span className="text-3xl text-primary">F</span>
 						<span className="text-black-200">ounders</span>
-						<span className="text-3xl text-blue-500 ml-2">H</span>
+						<span className="text-3xl text-primary ml-2">H</span>
 						<span className="text-black-200">ub</span>
 					</span>
 				</Link>

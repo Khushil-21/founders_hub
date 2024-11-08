@@ -200,8 +200,8 @@
 		background-image: linear-gradient(
 			to right,
 			transparent 48%,
-			rgba(251, 232, 67, 0.4) 48%,
-			rgba(251, 232, 67, 0.6) 50%,
+			rgba(255, 255, 255, 0.4) 48%,
+			rgba(255, 255, 255, 0.6) 50%,
 			transparent 50%
 		);
 		background-size: 5% 100%;

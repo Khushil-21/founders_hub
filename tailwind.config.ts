@@ -17,9 +17,9 @@ const config: Config = {
             colors: {
                 primary: {
                     "100": "#dbeafe",
-                    DEFAULT: "#3b82f6",
+                    DEFAULT: "#3667fd",
                 },
-                secondary: "#FBE843",
+                secondary: "#ffffff",
                 black: {
                     "100": "#333333",
                     "200": "#141413",
@@ -42,7 +42,7 @@ const config: Config = {
             boxShadow: {
                 100: "2px 2px 0px 0px rgb(0, 0, 0)",
                 200: "2px 2px 0px 2px rgb(0, 0, 0)",
-                300: "2px 2px 0px 2px rgb(59, 130, 246)",
+                300: "2px 2px 0px 2px rgb(54, 103, 253)",
             },
         },
     },
