@@ -1,5 +1,6 @@
 # 🚀 Founders Hub
 
+
 Welcome to **Founders Hub** – a platform where startup enthusiasts can discover, share, and explore innovative ideas in real-time.
 
 ---
